@@ -25,11 +25,11 @@ if(isset($_GET['id'])) {
         <p><?php echo $resto['description']; ?></p>
     </section>
 
-    <h3>La Carte / Menu</h3>
+    <h3>Nos Variétés de Miel</h3>
     <div class="grid">
         <?php while($plat = mysqli_fetch_assoc($res_menus)): ?>
             <article class="card">
-                <img src="assets/img/plats/<?php echo $plat['image_plat']; ?>" alt="<?php echo $plat['nom_plat']; ?>">
+                <img src="<?php echo BASE_URL; ?>/assets/images/plats/<?php echo $plat['image_plat']; ?>" alt="<?php echo $plat['nom_plat']; ?>">
                 <div class="card-body">
                     <h4><?php echo $plat['nom_plat']; ?></h4>
                     <p><?php echo $plat['description_plat']; ?></p>
@@ -60,14 +60,20 @@ if(isset($_GET['id'])) {
                 <form id="review-form" method="POST">
                     <div style="margin-bottom: 15px;">
                         <label>Note (de 1 à 5 étoiles)</label>
-                        <div style="display: flex; gap: 10px; margin-top: 10px;">
-                            <?php for($i = 1; $i <= 5; $i++): ?>
-                                <label style="cursor: pointer; font-size: 24px;">
-                                    <input type="radio" name="rating" value="<?php echo $i; ?>" style="display: none;">
-                                    <i class="fas fa-star" style="color: #ddd; transition: 0.2s;" onclick="this.style.color = 'var(--accent-color)'"></i>
+                        <div class="star-rating" style="display: flex; gap: 10px; margin-top: 10px; flex-direction: row-reverse; justify-content: flex-end;">
+                            <?php for($i = 5; $i >= 1; $i--): ?>
+                                <input type="radio" id="star<?php echo $i; ?>" name="rating" value="<?php echo $i; ?>" style="display: none;">
+                                <label for="star<?php echo $i; ?>" style="cursor: pointer; font-size: 24px; color: #ddd; transition: 0.2s;" class="star-label">
+                                    <i class="fas fa-star"></i>
                                 </label>
                             <?php endfor; ?>
                         </div>
+                        <style>
+                            .star-label:hover, .star-label:hover ~ .star-label,
+                            input[type="radio"]:checked ~ .star-label {
+                                color: var(--accent-color) !important;
+                            }
+                        </style>
                     </div>
 
                     <div style="margin-bottom: 15px;">
@@ -99,7 +105,9 @@ if(isset($_GET['id'])) {
                 .then(response => response.json())
                 .then(data => {
                     const reviewsList = document.getElementById('reviews-list');
-                    if (data.length === 0) {
+                    if (data.error) {
+                        reviewsList.innerHTML = `<p style="color: red;">Erreur: ${data.error}</p>`;
+                    } else if (data.length === 0) {
                         reviewsList.innerHTML = '<p style="color: #999;">Aucun avis pour le moment.</p>';
                     } else {
                         reviewsList.innerHTML = data.map(review => `
@@ -107,7 +115,7 @@ if(isset($_GET['id'])) {
                                 <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 10px;">
                                     <strong>${review.user_nom}</strong>
                                     <span style="color: var(--accent-color);">
-                                        ${'★'.repeat(review.rating)}${'☆'.repeat(5-review.rating)}
+                                        ${'★'.repeat(parseInt(review.rating))}${'☆'.repeat(5-parseInt(review.rating))}
                                     </span>
                                 </div>
                                 <p>${review.comment}</p>
@@ -118,7 +126,10 @@ if(isset($_GET['id'])) {
                         `).join('');
                     }
                 })
-                .catch(error => console.error('Erreur:', error));
+                .catch(error => {
+                    console.error('Erreur:', error);
+                    document.getElementById('reviews-list').innerHTML = `<p style="color: red;">Erreur de chargement des avis. Vérifiez la console.</p>`;
+                });
         }
 
         loadReviews();
@@ -138,11 +149,11 @@ if(isset($_GET['id'])) {
                 .then(response => response.json())
                 .then(data => {
                     if (data.success) {
-                        alert('Avis envoyé avec succès!');
+                        alert(data.message);
                         this.reset();
                         loadReviews();
                     } else {
-                        alert('Erreur: ' + data.error);
+                        alert('Erreur: ' + data.message);
                     }
                 })
                 .catch(error => console.error('Erreur:', error));

@@ -1,0 +1,22 @@
+# Réécriture d'URL pour HonneyHub
+
+# Activer le moteur de réécriture
+RewriteEngine On
+
+# Définir la base de répertoire
+RewriteBase /Soutenance/
+
+# Ne pas réécrire les fichiers ou répertoires existants
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Réécrire vers index.php
+RewriteRule ^([a-zA-Z0-9_-]+)/?$ public/index.php?page=$1 [QSA,L]
+RewriteRule ^([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/?$ public/index.php?page=$1&action=$2 [QSA,L]
+
+# Permettre l'accès aux assets directement
+RewriteCond %{REQUEST_URI} ^/Soutenance/(assets|public)/
+RewriteRule ^ - [L]
+
+# Configuration d'erreur
+ErrorDocument 404 "Page non trouvée"

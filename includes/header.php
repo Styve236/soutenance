@@ -5,7 +5,8 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 // Connexion à la base de données (nécessaire pour vérifier le rôle admin ici)
-include('db.php');
+include_once __DIR__ . '/db.php';
+include_once __DIR__ . '/../config.php';
 
 // Vérification du rôle admin pour l'affichage du menu
 $is_admin = false;
@@ -23,9 +24,9 @@ if (isset($_SESSION['user_id'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Douala Eats | Livraison de repas à Douala</title>
+    <title>HonyHub | Vente de miel à Douala</title>
     
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/css/style.css">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
@@ -56,20 +57,20 @@ if (isset($_SESSION['user_id'])) {
 <header class="main-header">
     <nav class="container">
         <div class="logo">
-            <a href="index.php">
-                <h1>Douala<span>Eats</span></h1>
+            <a href="<?php echo BASE_URL; ?>/index.php">
+                <h1>Hony<span>Hub</span></h1>
             </a>
         </div>
 
         <?php if(isset($_SESSION['user_id'])): ?>
             <div class="search-container">
-                <input type="text" id="search-input" class="search-input" placeholder="Chercher un restaurant, un plat...">
+                <input type="text" id="search-input" class="search-input" placeholder="Chercher une boutique, un miel...">
                 <div id="search-results"></div>
             </div>
         <?php endif; ?>
 
         <ul class="nav-links">
-            <li><a href="index.php"><i class="fas fa-utensils"></i> Restaurants</a></li>
+            <li><a href="<?php echo BASE_URL; ?>/index.php"><i class="fas fa-store"></i> Boutiques</a></li>
 
             <!-- Case Admin Preview -->
             <li style="display: flex; align-items: center;">
@@ -86,7 +87,7 @@ if (isset($_SESSION['user_id'])) {
                     </a>
                 </li>
                 
-                <li><a href="panier.php"><i class="fas fa-shopping-basket"></i> Panier</a></li>
+                <li><a href="<?php echo BASE_URL; ?>/panier.php"><i class="fas fa-shopping-basket"></i> Panier</a></li>
                 
                 <li class="user-menu">
                     <a href="#" style="cursor: pointer;">
@@ -97,17 +98,17 @@ if (isset($_SESSION['user_id'])) {
                     </a>
                     <ul class="dropdown">
                         <?php if($is_admin): ?>
-                            <li><a href="admin_commandes.php"><i class="fas fa-tasks"></i> Gestion Commandes</a></li>
-                            <li><a href="admin_dashboard.php"><i class="fas fa-chart-line"></i> Dashboard</a></li>
-                            <li><a href="admin_preview.php"><i class="fas fa-eye"></i> Aperçu Admin</a></li>
+                            <li><a href="<?php echo BASE_URL; ?>/admin_commandes.php"><i class="fas fa-tasks"></i> Gestion Commandes</a></li>
+                            <li><a href="<?php echo BASE_URL; ?>/admin_dashboard.php"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+                            <li><a href="<?php echo BASE_URL; ?>/admin_preview.php"><i class="fas fa-eye"></i> Aperçu Admin</a></li>
                         <?php endif; ?>
-                        <li><a href="mes_commandes.php"><i class="fas fa-list"></i> Mes achats</a></li>
-                        <li><a href="auth/logout.php" style="color: #e74c3c;"><i class="fas fa-sign-out-alt"></i> Déconnexion</a></li>
+                        <li><a href="<?php echo BASE_URL; ?>/mes_commandes.php"><i class="fas fa-list"></i> Mes achats</a></li>
+                        <li><a href="<?php echo BASE_URL; ?>/auth/logout.php" style="color: #e74c3c;"><i class="fas fa-sign-out-alt"></i> Déconnexion</a></li>
                     </ul>
                 </li>
             <?php else: ?>
-                <li><a href="auth/login.php" class="btn-login">Connexion</a></li>
-                <li><a href="auth/register.php" class="btn-register">S'inscrire</a></li>
+                <li><a href="<?php echo BASE_URL; ?>/auth/login.php" class="btn-login">Connexion</a></li>
+                <li><a href="<?php echo BASE_URL; ?>/auth/register.php" class="btn-register">S'inscrire</a></li>
             <?php endif; ?>
         </ul>
     </nav>

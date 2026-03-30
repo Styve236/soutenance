@@ -1,6 +1,7 @@
 <?php
 // Configuration générale de Douala Eats
 define('SITE_NAME', 'Douala Eats');
+define('BASE_URL', '/Soutenance');
 define('CURRENCY', 'FCFA');
 
 // Frais de livraison par défaut (Peut être rendu dynamique plus tard)

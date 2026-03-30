@@ -59,13 +59,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // 5. Gestion du formulaire Restaurant
     window.toggleRestaurantForm = function() {
         const form = document.getElementById('restaurant-form');
-        const formTitle = document.getElementById('form-title');
-        const addBtn = document.getElementById('add-btn');
-        const editBtn = document.getElementById('edit-btn');
+        const formTitle = document.getElementById('shop-form-title');
+        const addBtn = document.getElementById('add-shop-btn');
+        const editBtn = document.getElementById('edit-shop-btn');
 
         if (form.style.display === 'none' || form.style.display === '') {
             form.style.display = 'block';
-            formTitle.innerHTML = '<i class="fas fa-plus"></i> Ajouter un Restaurant';
+            formTitle.innerHTML = '<i class="fas fa-plus"></i> Ajouter une Boutique';
             addBtn.style.display = 'inline-block';
             editBtn.style.display = 'none';
             // Reset form
@@ -80,12 +80,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.editRestaurant = function(id, nom, quartier, description) {
         const form = document.getElementById('restaurant-form');
-        const formTitle = document.getElementById('form-title');
-        const addBtn = document.getElementById('add-btn');
-        const editBtn = document.getElementById('edit-btn');
+        const formTitle = document.getElementById('shop-form-title');
+        const addBtn = document.getElementById('add-shop-btn');
+        const editBtn = document.getElementById('edit-shop-btn');
 
         form.style.display = 'block';
-        formTitle.innerHTML = '<i class="fas fa-edit"></i> Modifier le Restaurant';
+        formTitle.innerHTML = '<i class="fas fa-edit"></i> Modifier la Boutique';
         addBtn.style.display = 'none';
         editBtn.style.display = 'inline-block';
 
@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (form.style.display === 'none' || form.style.display === '') {
             form.style.display = 'block';
-            formTitle.innerHTML = '<i class="fas fa-plus"></i> Ajouter un Menu';
+            formTitle.innerHTML = '<i class="fas fa-plus"></i> Ajouter un Miel';
             addBtn.style.display = 'inline-block';
             editBtn.style.display = 'none';
             // Reset form
@@ -127,7 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const editBtn = document.getElementById('edit-menu-btn');
 
         form.style.display = 'block';
-        formTitle.innerHTML = '<i class="fas fa-edit"></i> Modifier le Menu';
+        formTitle.innerHTML = '<i class="fas fa-edit"></i> Modifier le Miel';
         addBtn.style.display = 'none';
         editBtn.style.display = 'inline-block';
 

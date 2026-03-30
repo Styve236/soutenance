@@ -20,9 +20,13 @@ $sql = "INSERT INTO commandes (client_id, total, statut, date_commande)
 if (mysqli_query($conn, $sql)) {
     $id_commande = mysqli_insert_id($conn);
 
-    // 2. Préparation du message WhatsApp pour le livreur
-    $telephone_livreur = "237655052258"; // TON NUMÉRO DE FLOTTE
-    $texte = "Salut DoualaEats ! Nouvelle commande #$id_commande.\nClient : ".$_SESSION['user_nom']."\nTotal : ".number_format($total, 0, ',', ' ')." FCFA.\nPréparez la livraison !";
+    // 2. Préparation du message WhatsApp pour HonyHub (Le Livreur / L'Admin)
+    $telephone_livreur = "237655052258"; // NUMÉRO DE RÉCEPTION DES COMMANDES
+    $texte = "🐝 *Nouvelle Commande HonyHub* 🐝\n\n"
+           . "Salut ! Je viens de passer la commande *#$id_commande* sur la plateforme.\n"
+           . "👤 *Client* : " . $_SESSION['user_nom'] . "\n"
+           . "💰 *Montant Total* : " . number_format($total, 0, ',', ' ') . " FCFA.\n\n"
+           . "Merci d'organiser ma livraison de miel ! 🍯";
     $url_whatsapp = "https://wa.me/$telephone_livreur?text=" . urlencode($texte);
 
     // 3. On vide le panier après le succès
@@ -43,8 +47,8 @@ if (mysqli_query($conn, $sql)) {
                 <i class="fas fa-file-pdf"></i> Télécharger ma facture (PDF)
             </a>
 
-            <a href="<?php echo $url_whatsapp; ?>" target="_blank" style="background: #25D366; color: white; padding: 15px; border-radius: 8px; text-decoration: none; font-weight: bold;">
-                <i class="fab fa-whatsapp"></i> Informer le livreur sur WhatsApp
+            <a href="<?php echo $url_whatsapp; ?>" target="_blank" class="btn-whatsapp" style="background: #25D366; color: white; padding: 15px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 1.1em; transition: 0.3s; box-shadow: 0 4px 10px rgba(37, 211, 102, 0.4);">
+                <i class="fab fa-whatsapp" style="font-size: 1.2em; margin-right: 5px;"></i> Finaliser ma commande par WhatsApp
             </a>
 
             <a href="index.php" style="color: #777; text-decoration: none; margin-top: 10px;">Retour à l'accueil</a>

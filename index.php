@@ -33,8 +33,8 @@ $result = mysqli_query($conn, $sql);
     <?php if (!$is_logged_in): ?>
         <!-- PAGE D'ACCUEIL POUR LES UTILISATEURS NON CONNECTÉS -->
         <section style="padding: 60px 0; text-align: center; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('assets/img/hero-douala.jpg'); background-size: cover; border-radius: 15px; color: white; margin-top: 20px;">
-            <h2 style="font-size: 3rem; margin-bottom: 20px; font-weight: bold;">Bienvenue sur Douala Eats</h2>
-            <p style="font-size: 1.3rem; margin-bottom: 30px; max-width: 700px; margin-left: auto; margin-right: auto;">La plateforme de livraison de repas la plus rapide et la plus savoureuse de Douala</p>
+            <h2 style="font-size: 3rem; margin-bottom: 20px; font-weight: bold;">Bienvenue sur HonyHub</h2>
+            <p style="font-size: 1.3rem; margin-bottom: 30px; max-width: 700px; margin-left: auto; margin-right: auto;">La plateforme de livraison de miel la plus rapide et la plus naturelle de Douala</p>
         </section>
 
         <section style="margin-top: 50px; margin-bottom: 50px;">
@@ -42,15 +42,15 @@ $result = mysqli_query($conn, $sql);
                 <!-- Carte 1 -->
                 <div style="background: var(--white); padding: 30px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); text-align: center;">
                     <i class="fas fa-map-marker-alt" style="font-size: 2.5rem; color: var(--primary-color); margin-bottom: 15px; display: block;"></i>
-                    <h3 style="color: var(--secondary-color); margin-bottom: 10px;">Restaurants Variés</h3>
-                    <p style="color: #666;">Découvrez des centaines de restaurants à Douala, des braisés traditionnels aux fast-foods modernes.</p>
+                    <h3 style="color: var(--secondary-color); margin-bottom: 10px;">Boutiques Variées</h3>
+                    <p style="color: #666;">Découvrez de nombreux apiculteurs et boutiques, du miel pur traditionnel aux produits modernes (propolis).</p>
                 </div>
 
                 <!-- Carte 2 -->
                 <div style="background: var(--white); padding: 30px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); text-align: center;">
                     <i class="fas fa-bicycle" style="font-size: 2.5rem; color: var(--primary-color); margin-bottom: 15px; display: block;"></i>
                     <h3 style="color: var(--secondary-color); margin-bottom: 10px;">Livraison Rapide</h3>
-                    <p style="color: #666;">Vos repas arrivent frais et chauds en 25-40 minutes, directement à votre porte.</p>
+                    <p style="color: #666;">Vos miels arrivent en parfait état en 25-40 minutes, directement à votre porte.</p>
                 </div>
 
                 <!-- Carte 3 -->
@@ -63,7 +63,7 @@ $result = mysqli_query($conn, $sql);
 
             <div style="background: linear-gradient(135deg, var(--primary-color), #ff6b7a); color: white; padding: 50px 30px; border-radius: 15px; text-align: center;">
                 <h2 style="margin-bottom: 20px; font-size: 2rem;">Prêt à Commander?</h2>
-                <p style="font-size: 1.1rem; margin-bottom: 30px;">Créez votre compte maintenant pour accéder à tous nos restaurants et menus délicieux.</p>
+                <p style="font-size: 1.1rem; margin-bottom: 30px;">Créez votre compte maintenant pour accéder à toutes nos boutiques et miels délicieux.</p>
                 <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
                     <a href="auth/login.php" style="background: var(--white); color: var(--primary-color); padding: 12px 30px; border-radius: 5px; text-decoration: none; font-weight: bold; font-size: 1rem;">
                         <i class="fas fa-sign-in-alt"></i> Se Connecter
@@ -75,15 +75,15 @@ $result = mysqli_query($conn, $sql);
             </div>
 
             <div style="background: var(--bg-color); padding: 40px 30px; border-radius: 15px; margin-top: 40px;">
-                <h3 style="color: var(--secondary-color); margin-bottom: 20px; text-align: center;">Pourquoi Choisir Douala Eats?</h3>
+                <h3 style="color: var(--secondary-color); margin-bottom: 20px; text-align: center;">Pourquoi Choisir HonyHub?</h3>
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
                     <div>
                         <h4 style="color: var(--primary-color); margin-bottom: 10px;"><i class="fas fa-check"></i> Large Sélection</h4>
-                        <p style="color: #666;">Des braisés à Akwa aux pâtisseries de Bonapriso</p>
+                        <p style="color: #666;">Du miel blanc d'Oku au miel sauvage de l'Adamaoua</p>
                     </div>
                     <div>
-                        <h4 style="color: var(--primary-color); margin-bottom: 10px;"><i class="fas fa-check"></i> Menus Variés</h4>
-                        <p style="color: #666;">Plats traditionnels, fast-food, desserts et bien plus</p>
+                        <h4 style="color: var(--primary-color); margin-bottom: 10px;"><i class="fas fa-check"></i> Miels Variés</h4>
+                        <p style="color: #666;">Miel pur, propolis, gelée royale et bien plus</p>
                     </div>
                     <div>
                         <h4 style="color: var(--primary-color); margin-bottom: 10px;"><i class="fas fa-check"></i> Suivi Commande</h4>
@@ -100,8 +100,8 @@ $result = mysqli_query($conn, $sql);
     <?php else: ?>
         <!-- PAGE D'ACCUEIL POUR LES UTILISATEURS CONNECTÉS -->
         <section style="padding: 40px 0; text-align: center; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('assets/img/hero-douala.jpg'); background-size: cover; border-radius: 15px; color: white; margin-top: 20px;">
-            <h2 style="font-size: 2.5rem; margin-bottom: 10px;">Le meilleur de Douala à domicile</h2>
-            <p style="font-size: 1.2rem;">Commandez dans vos restaurants préférés à Akwa, Bonapriso et partout ailleurs.</p>
+            <h2 style="font-size: 2.5rem; margin-bottom: 10px;">Le meilleur miel de Douala à domicile</h2>
+            <p style="font-size: 1.2rem;">Commandez dans vos boutiques préférées à Akwa, Bonapriso et partout ailleurs.</p>
         </section>
 
         <section style="margin-top: 30px;">
@@ -110,17 +110,17 @@ $result = mysqli_query($conn, $sql);
                 <a href="index.php" class="btn-cat <?php echo ($cat_filtre == '' && $search == '') ? 'active' : ''; ?>">
                     <i class="fas fa-border-all"></i> Tous
                 </a>
-                <a href="index.php?cat=Braisés" class="btn-cat <?php echo $cat_filtre == 'Braisés' ? 'active' : ''; ?>">
-                    <i class="fas fa-fire"></i> Braisés
+                <a href="index.php?cat=Miel Pur" class="btn-cat <?php echo $cat_filtre == 'Miel Pur' ? 'active' : ''; ?>">
+                    <i class="fas fa-jar"></i> Miel Pur
                 </a>
-                <a href="index.php?cat=Traditionnel" class="btn-cat <?php echo $cat_filtre == 'Traditionnel' ? 'active' : ''; ?>">
-                    <i class="fas fa-leaf"></i> Traditionnel
+                <a href="index.php?cat=Miel Blanc" class="btn-cat <?php echo $cat_filtre == 'Miel Blanc' ? 'active' : ''; ?>">
+                    <i class="fas fa-leaf"></i> Miel Blanc
                 </a>
-                <a href="index.php?cat=Fast-food" class="btn-cat <?php echo $cat_filtre == 'Fast-food' ? 'active' : ''; ?>">
-                    <i class="fas fa-hamburger"></i> Fast-food
+                <a href="index.php?cat=Propolis" class="btn-cat <?php echo $cat_filtre == 'Propolis' ? 'active' : ''; ?>">
+                    <i class="fas fa-star"></i> Propolis
                 </a>
-                <a href="index.php?cat=Pâtisserie" class="btn-cat <?php echo $cat_filtre == 'Pâtisserie' ? 'active' : ''; ?>">
-                    <i class="fas fa-birthday-cake"></i> Pâtisserie
+                <a href="index.php?cat=Gelée Royale" class="btn-cat <?php echo $cat_filtre == 'Gelée Royale' ? 'active' : ''; ?>">
+                    <i class="fas fa-crown"></i> Gelée Royale
                 </a>
             </div>
         </section>
@@ -131,10 +131,10 @@ $result = mysqli_query($conn, $sql);
                     <?php 
                     if ($search != '') echo "Résultats pour : " . htmlspecialchars($search);
                     elseif ($cat_filtre != '') echo "Spécialités : " . htmlspecialchars($cat_filtre);
-                    else echo "Restaurants à la une";
+                    else echo "Boutiques à la une";
                     ?>
                 </h3>
-                <span style="color: #777; font-size: 0.9em;"><?php echo mysqli_num_rows($result); ?> restaurants trouvés</span>
+                <span style="color: #777; font-size: 0.9em;"><?php echo mysqli_num_rows($result); ?> boutiques trouvées</span>
             </div>
 
             <div class="grid">
@@ -145,7 +145,7 @@ $result = mysqli_query($conn, $sql);
                     <a href="menu.php?id=<?php echo $resto['id']; ?>" style="text-decoration: none; color: inherit;">
                         <article class="card">
                             <div style="position: relative;">
-                                <img src="assets/img/restos/<?php echo !empty($resto['image_logo']) ? $resto['image_logo'] : 'default-resto.jpg'; ?>" alt="<?php echo e($resto['nom_resto']); ?>">
+                                <img src="<?php echo BASE_URL; ?>/assets/images/restos/<?php echo !empty($resto['image_logo']) ? $resto['image_logo'] : 'default-resto.jpg'; ?>" alt="<?php echo e($resto['nom_resto']); ?>">
                                 <span style="position: absolute; top: 10px; right: 10px; background: var(--primary-color); color: white; padding: 5px 10px; border-radius: 5px; font-size: 0.8em; font-weight: bold;">
                                     <?php echo e($resto['categorie']); ?>
                                 </span>
@@ -174,8 +174,8 @@ $result = mysqli_query($conn, $sql);
             ?>
                 <div style="grid-column: 1 / -1; text-align: center; padding: 50px; background: white; border-radius: 10px;">
                     <i class="fas fa-search" style="font-size: 3rem; color: #ccc; margin-bottom: 15px;"></i>
-                    <p>Désolé, nous n'avons trouvé aucun restaurant correspondant à votre recherche.</p>
-                    <a href="index.php" style="color: var(--primary-color); font-weight: bold;">Voir tous les restaurants</a>
+                    <p>Désolé, nous n'avons trouvé aucune boutique correspondant à votre recherche.</p>
+                    <a href="index.php" style="color: var(--primary-color); font-weight: bold;">Voir toutes les boutiques</a>
                 </div>
             <?php endif; ?>
         </div>

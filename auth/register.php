@@ -1,5 +1,6 @@
 <?php 
 include('../includes/db.php'); 
+include('../config.php'); 
 include('../includes/header.php'); 
 
 if(isset($_POST['register'])) {

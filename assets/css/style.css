@@ -7,6 +7,15 @@
     --white: #ffffff;
 }
 
+/* --- Variables de couleurs (Dark Mode) --- */
+body.dark-mode {
+    --primary-color: #ff6b81; /* Rouge orangé clair pour constraster */
+    --secondary-color: #f1f2f6; /* Texte clair sur fond sombre */
+    --accent-color: #ffa502; 
+    --bg-color: #1e272e; /* Fond principal de la page */
+    --white: #2f3542; /* Les éléments blancs (cartes, menus) deviennent sombres */
+}
+
 /* --- Reset de base --- */
 * {
     margin: 0;
@@ -124,7 +133,7 @@ body {
 }
 
 .card {
-    background: white;
+    background: var(--white);
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
@@ -155,7 +164,7 @@ body {
 }
 .btn-cat {
     padding: 10px 20px;
-    background: white;
+    background: var(--white);
     border: 1px solid var(--primary-color);
     border-radius: 20px;
     text-decoration: none;

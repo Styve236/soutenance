@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualisation des Diagrammes - HonyHub</title>
+    <!-- Chargement de la bibliothèque Mermaid depuis un CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        // Initialisation de Mermaid (utilise le thème clair par défaut)
+        mermaid.initialize({ startOnLoad: true, theme: 'default' });
+    </script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+            margin: 0;
+            padding: 30px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        p.info {
+            text-align: center;
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 40px;
+            background: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            border-left: 5px solid #3498db;
+        }
+        .diagram-section {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            padding: 30px;
+            margin-bottom: 40px;
+            transition: transform 0.2s;
+        }
+        .diagram-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+        }
+        h2 {
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+            color: #3498db;
+            margin-top: 0;
+        }
+        .mermaid {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+            padding: 20px;
+            background: #fdfdfd;
+            border-radius: 8px;
+            border: 1px dashed #e0e0e0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>📊 Diagrammes de Conception - HonyHub</h1>
+    <p class="info">💡 <b>Astuce :</b> Vous pouvez utiliser l'outil de capture d'écran de Windows (<code>Touche Windows</code> + <code>Maj</code> + <code>S</code>) pour copier facilement chaque diagramme dans Word, PowerPoint ou tout autre rapport de soutenance.</p>
+
+    <div class="diagram-section">
+        <h2>1. Diagramme de Classes</h2>
+        <div class="mermaid">
+        classDiagram
+            class User {
+                +int id
+                +string nom
+                +string email
+                +string password
+                +string role
+            }
+
+            class Restaurant {
+                +int id
+                +string nom_resto
+                +string description
+                +string image_logo
+                +string categorie
+                +addMenu()
+                +updateInfos()
+            }
+
+            class Menu {
+                +int id
+                +int restaurant_id
+                +string nom
+                +float prix
+                +string description
+                +string image
+            }
+
+            class Commande {
+                +int id
+                +int user_id
+                +float total
+                +string statut
+                +datetime date_commande
+                +valider()
+                +updateStatut()
+            }
+
+            class Panier {
+                +int id
+                +int user_id
+                +int menu_id
+                +int quantity
+                +datetime created_at
+                +ajouter()
+                +retirer()
+            }
+
+            class Avis {
+                +int id
+                +int restaurant_id
+                +int user_id
+                +int rating
+                +string comment
+                +datetime created_at
+            }
+
+            class Notification {
+                +int id
+                +int user_id
+                +string type
+                +string message
+                +boolean is_read
+                +datetime created_at
+                +marquerCommeLu()
+            }
+
+            User "1" -- "0..*" Commande : passe
+            User "1" -- "0..*" Panier : possède
+            User "1" -- "0..*" Avis : laisse
+            User "1" -- "0..*" Notification : reçoit
+            
+            Restaurant "1" -- "0..*" Menu : propose
+            Restaurant "1" -- "0..*" Avis : reçoit
+            
+            Menu "1" -- "0..*" Panier : est dans
+            Commande "1" -- "1..*" Menu : contient
+        </div>
+    </div>
+
+    <div class="diagram-section">
+        <h2>2. Diagramme de Séquence (Processus de Commande)</h2>
+        <div class="mermaid">
+        sequenceDiagram
+            actor Client
+            participant Frontend as Interface (Navigateur)
+            participant Backend as API PHP
+            participant DB as Base de Données
+
+            Client->>Frontend: Recherche un miel/boutique
+            Frontend->>Backend: Requête API (search_api.php)
+            Backend->>DB: SELECT sur restaurants (apiculteurs) et menus (miels)
+            DB-->>Backend: Résultats (Données)
+            Backend-->>Frontend: JSON résultats
+            Frontend-->>Client: Affiche les suggestions en temps réel
+
+            Client->>Frontend: Ajoute un miel au panier
+            Frontend->>Backend: POST panier_api.php (action=add)
+            Backend->>DB: INSERT / UPDATE table panier
+            DB-->>Backend: Confirmation
+            Backend-->>Frontend: Succès (Nouveau total)
+            Frontend-->>Client: Met à jour le widget panier
+
+            Client->>Frontend: Clique sur "Valider la commande"
+            Frontend->>Backend: POST Checkout
+            Backend->>DB: INSERT commande
+            Backend->>DB: DELETE FROM panier (vider le panier de l'utilisateur)
+            Backend->>DB: INSERT notification (ex: type='order')
+            DB-->>Backend: Confirmation
+            Backend-->>Frontend: Succès commande
+            Frontend-->>Client: Redirection vers confirmation.php avec statut
+        </div>
+    </div>
+
+    <div class="diagram-section">
+        <h2>3. Diagramme de Gantt</h2>
+        <div class="mermaid">
+        gantt
+            title Planification de la réalisation de HonyHub
+            dateFormat  YYYY-MM-DD
+            
+            section 1. Analyse
+            Analyse des besoins & Cahier des charges :a1, 2024-01-01, 7d
+            Analyse de sécurité (ex: Injections SQL) :a2, after a1, 3d
+            
+            section 2. Conception
+            Conception de la BDD (MCD/MLD)       :c1, 2024-01-11, 5d
+            Maquettage UI/UX (Responsive)        :c2, after c1, 6d
+            
+            section 3. Dév. Backend
+            Configuration Serveur & DB           :d1, 2024-01-22, 5d
+            Développement des API (Panier, Avis) :d2, after d1, 8d
+            Mise en place Prepared Statements    :d3, after d2, 4d
+            Dashboard Admin & Statistiques       :d4, after d3, 5d
+            
+            section 4. Dév. Frontend
+            Intégration HTML/CSS Modulaire       :f1, 2024-02-05, 10d
+            JavaScript temps réel (Ajax, Notifs) :f2, after f1, 8d
+            
+            section 5. Tests
+            Tests unitaires et Recettage         :t1, 2024-02-23, 7d
+            Correction des bugs & Optimisation   :t2, after t1, 4d
+            Préparation document de soutenance   :t3, after t2, 5d
+        </div>
+    </div>
+
+    <div class="diagram-section">
+        <h2>4. Diagramme des Cas d'Utilisation</h2>
+        <div class="mermaid">
+        flowchart LR
+            %% Acteurs
+            Client([👤 Client])
+            Admin([🛡️ Administrateur])
+            
+            %% Système
+            subgraph HonyHub [Système HonyHub]
+                direction TB
+                Rechercher(Rechercher un miel/boutique)
+                Panier(Gérer son panier)
+                Commander(Passer une commande)
+                Suivre(Suivre sa commande)
+                Avis(Laisser un avis)
+                
+                GererMenu(Gérer catalogues / restos)
+                Stats(Consulter les statistiques)
+                NotifAdmin(Recevoir notifs de commande)
+            end
+            
+            %% Relations Client
+            Client --> Rechercher
+            Client --> Panier
+            Client --> Commander
+            Client --> Suivre
+            Client --> Avis
+            
+            %% Relations Admin
+            Admin --> GererMenu
+            Admin --> Stats
+            Admin --> NotifAdmin
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

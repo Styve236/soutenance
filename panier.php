@@ -22,8 +22,8 @@ if (isset($_GET['remove'])) {
 
     <?php if (empty($_SESSION['panier'])): ?>
         <div style="text-align: center; padding: 50px; background: white; border-radius: 10px;">
-            <p>Votre panier est vide. Les meilleures saveurs de Douala vous attendent !</p>
-            <a href="index.php" class="btn-register" style="display:inline-block; margin-top:20px; text-decoration:none;">Parcourir les menus</a>
+            <p>Votre panier est vide. Les meilleurs miels de Douala vous attendent !</p>
+            <a href="index.php" class="btn-register" style="display:inline-block; margin-top:20px; text-decoration:none;">Parcourir les miels</a>
         </div>
     <?php else: ?>
         <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 30px;">
@@ -32,7 +32,7 @@ if (isset($_GET['remove'])) {
                 <table style="width: 100%; border-collapse: collapse;">
                     <thead>
                         <tr style="border-bottom: 2px solid #eee; text-align: left;">
-                            <th style="padding: 10px;">Plat</th>
+                            <th style="padding: 10px;">Miel</th>
                             <th>Prix</th>
                             <th>Qté</th>
                             <th>Total</th>

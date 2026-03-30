@@ -1,8 +1,8 @@
-<footer style="background: var(--secondary-color); color: white; padding: 40px 0; margin-top: 50px;">
+<footer style="background: #2f3542; color: #f1f2f6; padding: 40px 0; margin-top: 50px;">
     <div class="container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
         <div>
-            <h3>Douala<span>Eats</span></h3>
-            <p>Le goût de Douala à votre porte.</p>
+            <h3>Hony<span>Hub</span></h3>
+            <p>Le meilleur miel de Douala à votre porte.</p>
         </div>
         <div>
             <h4>Quartiers desservis</h4>
@@ -10,6 +10,7 @@
                 <li>Bonapriso</li>
                 <li>Akwa</li>
                 <li>Logpom / Kotto</li>
+                <li> Et ailleur aussi</li>
             </ul>
         </div>
         <div>
@@ -17,11 +18,11 @@
             <p><i class="fab fa-whatsapp"></i> +237 696-16-50-61</p>
         </div>
     </div>
-    <div style="text-align: center; margin-top: 30px; border-top: 1px solid #444; padding-top: 20px;">
-        &copy; <?php echo date('Y'); ?> DoualaEats - Fait avec passion.
+    <div style="text-align: center; margin-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px;">
+        &copy; <?php echo date('Y'); ?> HonyHub - Fait avec passion.
     </div>
 </footer>
 
-<script src="assets/js/main.js"></script>
+<script src="<?php echo defined('BASE_URL') ? BASE_URL : ''; ?>/assets/js/main.js"></script>
 </body>
 </html>

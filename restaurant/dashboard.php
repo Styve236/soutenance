@@ -28,7 +28,7 @@ if (isset($_POST['ajouter_plat'])) {
     
     // Gestion de l'image du plat
     $image = $_FILES['image']['name'];
-    $target = "../assets/img/plats/" . basename($image);
+    $target = "../assets/images/plats/" . basename($image);
     move_uploaded_file($_FILES['image']['tmp_name'], $target);
 
     mysqli_query($conn, "INSERT INTO plats (restaurant_id, nom_plat, prix, description, image_plat) 
@@ -86,7 +86,7 @@ include('../includes/header.php');
                         <?php while($p = mysqli_fetch_assoc($plats)): ?>
                         <tr style="border-bottom: 1px solid #eee;">
                             <td style="padding: 10px;">
-                                <img src="../assets/img/plats/<?php echo $p['image_plat']; ?>" style="width: 50px; height: 50px; border-radius: 5px; object-fit: cover;">
+                                <img src="../assets/images/plats/<?php echo $p['image_plat']; ?>" style="width: 50px; height: 50px; border-radius: 5px; object-fit: cover;">
                             </td>
                             <td><strong><?php echo e($p['nom_plat']); ?></strong></td>
                             <td><?php echo number_format($p['prix'], 0, ',', ' '); ?> FCFA</td>
